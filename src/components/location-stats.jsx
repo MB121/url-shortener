@@ -34,7 +34,7 @@ export default function LocationStats({ stats = [] }) {
             <YAxis />
             <Tooltip labelStyle={{ color: "green" }} />
             <Legend />
-            <Line type="monotone" dataKey="cities" stroke="#8884d8" />
+            <Line type="monotone" dataKey="city" stroke="#8884d8" />
           </LineChart>
         )}
       </ResponsiveContainer>

@@ -43,7 +43,7 @@ const LinkPage = () => {
     loading: loadingStats,
     data: stats,
     fn: fnStats,
-  } = useFetch(getClicksForUrl, { id });
+  } = useFetch(getClicksForUrl, id);
 
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, id);
 
@@ -135,7 +135,7 @@ const LinkPage = () => {
           <CardHeader>
             <CardTitle className="text-4xl font-extrabold">Stats</CardTitle>
           </CardHeader>
-          {!stats && !stats?.length ? (
+          {stats && stats?.length ? (
             <CardContent className="flex flex-col gap-6">
               <Card>
                 <CardHeader>
