@@ -40,7 +40,9 @@ const Header = () => {
                     src={user?.user_metadata?.profile_pic}
                     className="object-contain"
                   />
-                  <AvatarFallback>MB</AvatarFallback>
+                  <AvatarFallback>
+                    {user?.user_metadata?.name?.slice(0, 2).toUpperCase()}
+                  </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>

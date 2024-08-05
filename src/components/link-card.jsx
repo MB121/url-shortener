@@ -9,6 +9,7 @@ import { BeatLoader } from "react-spinners";
 const LinkCard = ({ url, fetchUrls }) => {
   const { loading: loadingDelete, fn: fnDelete } = useFetch(deleteUrl, url?.id);
 
+  // download any images
   const downloadImage = () => {
     const imageUrl = url?.qr;
     const fileName = url?.title;
@@ -17,7 +18,7 @@ const LinkCard = ({ url, fetchUrls }) => {
     anchor.href = imageUrl;
     anchor.download = fileName;
 
-    document.body.appendChild(Anchor);
+    document.body.appendChild(anchor);
 
     anchor.click();
 
@@ -36,8 +37,7 @@ const LinkCard = ({ url, fetchUrls }) => {
           {url?.title}
         </span>
         <span className="text-2xl text-blue-400 font-bold hover:underline cursor-pointer">
-          {/* https://trimmer.in/{url?.custom_url ? url?.custom_url : url.short_url} */}
-          https://trimmer.in/{url.short_url}
+          localhost:5173/{url?.custom_url ? url?.custom_url : url.short_url}
         </span>
         <span className="flex items-center gap-1 hover:underline cursor-pointer">
           {url?.original_url}
@@ -51,7 +51,9 @@ const LinkCard = ({ url, fetchUrls }) => {
         <Button
           variant="ghost"
           onClick={() =>
-            navigator.clipboard.writeText(`https://trimmer.in/${url.short_url}`)
+            navigator.clipboard.writeText(
+              `${import.meta.env.VITE_BASE_URL}/${url.short_url}`
+            )
           }
         >
           <Copy />
